@@ -1,0 +1,47 @@
+
+
+
+
+<div class="table-responsive ">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Data</th>
+        <th>Nome</th>
+        <th>Valor</th>
+        <th>acoes</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let despesa of despesas" >
+        <td>
+          <i *ngIf=" despesa.tipo == 'Mercado'">
+            <i class="glyphicon glyphicon-shopping-cart"></i>
+          </i>
+          <i *ngIf=" despesa.tipo == 'Lazer'">
+            <i class="glyphicon glyphicon-knight"></i>
+          </i>
+          <i *ngIf=" despesa.tipo == 'Saude'">
+            <i class="glyphicon glyphicon-heart-empty"></i>
+          </i>
+
+          {{despesa.tipo}}
+        </td>
+        <td>{{despesa.data | date: 'dd-MM-yyy'}}</td>
+        <td>{{despesa.nome}}</td>
+        <td>{{despesa.valor| currencyRS}}</td>
+        <td>
+          <button class="delete btn btn-danger" (click)="del(despesa.id)"> <i class="glyphicon glyphicon-trash "></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+<button class="btn btn-primary" (click)="add()">
+  <i class="glyphicon glyphicon-plus"></i> Adicionar Despesa
+</button>
